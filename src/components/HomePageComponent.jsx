@@ -9,7 +9,7 @@ function HomePageComponent() {
             <section>
                 tylko tu obliczysz czy warto dziś przyjśc do zajączka :D
             </section>
-        
+            
 
             </div>
         </main>
