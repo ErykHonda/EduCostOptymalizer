@@ -5,7 +5,8 @@
   --fontFooterSize: 1rem;
   --elementWidht: 90%;
   --colorforprintbtn: #ffa500;
-
+  --colorRed: #ff0000;
+  user-select: none;
 }
 
 #darktheme-prev {
@@ -45,6 +46,8 @@
   --colorText3: #ffffff;
   --colorText4: #ffffff;
   --colorText5: #ffffff;
+  --colorRed: #b30000;
+
 }
 
 #firsttheme {
@@ -85,7 +88,7 @@ footer {
   float: left;
   height: calc(100% - 2rem);
   width: calc(100% / 2 - 2rem);
-  background-color: red;
+  background-color: var(--colorRed);
 }
 
 
@@ -343,7 +346,7 @@ footer div {
 }
 
 .b2 {
-  border: 2px solid #ff0000;
+  border: 2px solid var(--colorRed);
 }
 
 .b3 {
@@ -374,7 +377,7 @@ footer div {
 
 
 .type2::after {
-  --colorButton: #ff0000;
+  --colorButton: var(--colorRed);
   content: "";
   position: absolute;
   left: 0;
@@ -509,11 +512,11 @@ footer div {
 .MainStronaGlowna div h4 {
   font-size: 1.5rem;
   text-align: center;
-  color: red;
+  color: var(--colorRed);
   -webkit-text-stroke: 0.09rem black;
 }
 
-/* usatwienia */
+/* ustawienia */
 .wrapper {
   --font-color-dark: var(--colorText3);
   --font-color-light: var(--colorText5);
@@ -661,7 +664,7 @@ div.Iobs ol {
 }
 
 div.Iobs ol li span.uwaga {
-  color: red;
+  color: var(--colorRed);
 }
 
 div.Iobs ol li span.pomarancz {
@@ -672,35 +675,85 @@ span.green {
   color: #00cc00;
 }
 
-.BlMa
-{
+.BlMa {
   width: 80%;
   height: 50%;
   text-align: center;
   margin: auto;
 }
 
-.Red-box
-{
-  color: #ff0000;
+.Red-box {
+  color: var(--colorRed);
 }
 
-@media (max-width: 1024px) {
+.element .element {
+  text-align: center;
+}
+
+.element .element h1 {
+  font-size: 4rem;
+}
+
+.element .element h4 {
+  font-size: 2rem;
+  color: var(--colorRed);
+}
+
+@media (max-width: 1023px) {
 
   .radio-input label span {
     font-size: 1.2rem;
   }
+
   .MainStronaGlowna div h1 {
     font-size: 2rem;
   }
+
   .MainStronaGlowna div h2 {
     font-size: 1.5rem;
   }
+
   .MainStronaGlowna div h3 {
     font-size: 1rem;
   }
+
   .MainStronaGlowna div h4 {
     font-size: 1.2rem;
     -webkit-text-stroke: 0rem black;
+  }
+
+  .zmianaTrybu {
+    width: 90%;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .zmianaTrybu h3 {
+    font-size: 1.5rem;
+  }
+
+  .Span-Box-Button {
+    font-size: 1rem;
+  }
+
+  h1.Iiobs {
+    font-size: 2rem;
+  }
+
+  div.Iobs ol {
+    font-size: 1.1rem;
+  }
+
+  div.Iobs {
+    width: 100%;
+  }
+
+  .element .element h1 {
+    font-size: 2rem;
+  }
+
+  .element .element h4 {
+    font-size: 1rem;
+    color: var(--colorRed);
   }
 }

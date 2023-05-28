@@ -66,7 +66,7 @@ function PodsumowanieComp() {
 
   return (
     <div className='element' >
-      <h1>opłaca się przyjść na {odp}%</h1>
+      <h1>Opłaca Się Przyjść Na {odp}%</h1>
       <h4>{idzDoDarinia}</h4>
     </div>
   )

@@ -1,5 +1,5 @@
 export const Author = "Eryk Wiśniewski 2G"
-export const Version = "0.2.7"
+export const Version = "0.2.8"
 
 export const listaPrzedmiotow = [
     ['Przedmiot', 0],
