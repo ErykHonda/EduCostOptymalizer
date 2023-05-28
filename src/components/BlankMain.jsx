@@ -3,7 +3,12 @@ import React from 'react'
 function BlankMain() {
   return (
     <div className="element" id='Aside'>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, doloribus sit veniam omnis magni animi. Eos laudantium enim error ullam, sequi corrupti libero rerum, exercitationem quos ducimus facere natus consectetur!
+      <div className="BlMa">
+        <h1>Obecnie Brak Elementów Do Uzupełnienia</h1>
+        <h2>Aby Rozpocząć Naciśnij Przycisk<span className="green">"Dodaj"</span></h2>
+        <h2 className='Red-box'>UWAGA: podane dane są danymi poglądowymi.</h2>
+        <h2 className='Red-box'>Nalerzy Samemu Przemyśleć Decyzję</h2>
+      </div>
     </div>
   )
 }

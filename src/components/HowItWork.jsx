@@ -4,7 +4,17 @@ function HowItWork() {
   return (
     <main className='MainAside'>
       <div className="element" id='Aside'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, doloribus sit veniam omnis magni animi. Eos laudantium enim error ullam, sequi corrupti libero rerum, exercitationem quos ducimus facere natus consectetur!
+        <h1 className='Iiobs'>Instrukcja Obsługi</h1>
+        <div className="Iobs">
+        <ol>
+          <li>Wejdz w "Kalkulator"</li>
+          <li>Klikajac przycisk <span className='green'>"Dodaj"</span> dodajesz pole które <span className='uwaga'>MUSISZ UZUPEŁNIĆ</span></li>
+          <li>Po wypełnieniu wszystkich potrzebnych pól nalerzy nacisnąć <span className='pomarancz'>pomarańczowy</span> przycisk </li>
+          <li>Po naciśnięciu wyświetli się panel z wyliczeniem</li>
+          <li>Aby kontynuować kalkulowanie należy ponownie nacisnąć przycisk <span className='green'>"Dodaj"</span></li>
+        </ol>
+        </div>
+
       </div>
     </main>
   )

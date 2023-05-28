@@ -1,5 +1,5 @@
 export const Author = "Eryk Wiśniewski 2G"
-export const Version = "0.2.6"
+export const Version = "0.2.7"
 
 export const listaPrzedmiotow = [
     ['Przedmiot', 0],
@@ -30,9 +30,9 @@ export const listaNauczycieli = [
     ["Bartosińska", "Grażyna", listaPrzedmiotow[1], 1],
     ["Słomkowska", "Monika", listaPrzedmiotow[2], 1],
     ["Słomkowska", "Monika", listaPrzedmiotow[17], 1],
-    ["Rudzki", "Dariusz", listaPrzedmiotow[3], 2],
-    ["Rudzki", "Dariusz", listaPrzedmiotow[18], 2],
-    ["Rudzki", "Dariusz", listaPrzedmiotow[19], 2],
+    ["Rudzki", "Dariusz", listaPrzedmiotow[3], 1],
+    ["Rudzki", "Dariusz", listaPrzedmiotow[18], 1],
+    ["Rudzki", "Dariusz", listaPrzedmiotow[19], 1],
     ["Rychlik", "Jerzy", listaPrzedmiotow[4], 1],
     ["Staszewska", "Alina", listaPrzedmiotow[5], 1],
     ["Wróbel", "Danuta", listaPrzedmiotow[6], 1],

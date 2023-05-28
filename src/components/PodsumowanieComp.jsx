@@ -14,52 +14,60 @@ function PodsumowanieComp() {
     SN = listaNauczycieli[InputValueN[i]][3]
     SRE = randomevent[InputValueRE[i]][1]
     SPNRE += SP * SN * SRE;
+    console.log(SPNRE)
   }
 
 
-  let LiczbaProcentWejscia;
+  let LiczbaProcentWejscia = 90;
   switch (InputValueN.length) {
     case 1:
       {
-        LiczbaProcentWejscia = 20;
+        LiczbaProcentWejscia = 15;
         break;
       }
     case 2:
       {
-        LiczbaProcentWejscia = 30;
+        LiczbaProcentWejscia = 25;
         break;
       }
     case 3:
+      {
+        LiczbaProcentWejscia = 30;
+        break;
+      }
+    case 4:
+      {
+        LiczbaProcentWejscia = 35;
+        break;
+      }
+    case 5:
       {
         LiczbaProcentWejscia = 50;
         break;
       }
     default:
       {
-        LiczbaProcentWejscia = 80;
-        break;
+        LiczbaProcentWejscia = 95;
       }
   }
 
-  let odp = Math.floor(((SPNRE) / ((InputValueN.length * 100) / LiczbaProcentWejscia)) * 100)
+  let odp = Math.floor((SPNRE) / (InputValueN.length) * LiczbaProcentWejscia);
 
-  if (odp > 200) odp = 200;
+  if (odp > 100) odp = 100;
   let idzDoDarinia = null;
   if (odp < 40) {
     for (let i = 0; i < InputValueN.length; i++) {
-      if (listaNauczycieli[InputValueN[i]][2][0] === "Pm4, Pm5, Pm6") {
-        idzDoDarinia = "Nie Ważne Co Idz Na Lekcje Pana Dariusza Rudzkiego";
+      if (listaNauczycieli[InputValueN[i]][2][0] === "Pm4" || listaNauczycieli[InputValueN[i]][2][0] === "Pm5" || listaNauczycieli[InputValueN[i]][2][0] === "Pm6") {
+        if (randomevent[InputValueRE[i]][0] !== 'Odwołana/Zastępstow') idzDoDarinia = "Nie Ważne Co Idz Na Lekcje Pana Dariusza Rudzkiego";
       }
     }
   }
 
 
-
-
   return (
     <div className='element' >
-      opłaca się przyjść na {odp}%
-      <p>{idzDoDarinia}</p>
+      <h1>opłaca się przyjść na {odp}%</h1>
+      <h4>{idzDoDarinia}</h4>
     </div>
   )
 }
