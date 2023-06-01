@@ -6,13 +6,13 @@ function HowItWork() {
       <div className="element" id='Aside'>
         <h1 className='Iiobs'>Instrukcja Obsługi</h1>
         <div className="Iobs">
-        <ol>
+        {/* <ol>
           <li>Wejdz w "Kalkulator"</li>
           <li>Klikajac przycisk <span className='green'>"Dodaj"</span> dodajesz pole które <span className='uwaga'>MUSISZ UZUPEŁNIĆ</span></li>
           <li>Po wypełnieniu wszystkich potrzebnych pól nalerzy nacisnąć <span className='pomarancz'>pomarańczowy</span> przycisk </li>
           <li>Po naciśnięciu wyświetli się panel z wyliczeniem</li>
           <li>Aby kontynuować kalkulowanie należy ponownie nacisnąć przycisk <span className='green'>"Dodaj"</span></li>
-        </ol>
+        </ol> */}
         </div>
 
       </div>

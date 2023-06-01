@@ -9,6 +9,10 @@
   user-select: none;
 }
 
+* {
+  font-family: sans-serif;
+}
+
 #darktheme-prev {
   --color1: #222222;
   --color2: #555555;
@@ -109,13 +113,13 @@ main {
   border-radius: 2rem;
   margin: auto;
   margin-bottom: 1rem;
-
 }
 
+.element1 section {
+  text-align: center;
+}
 
-
-.NIP-select,
-.RE-select {
+.select {
   height: 2.5rem;
   margin: 1rem;
   font-size: 1rem;
@@ -123,21 +127,25 @@ main {
   padding: .5rem;
   background: var(--color2);
   color: var(--colorText2);
+  text-align: center;
 }
 
-.NIP-select:hover,
-.RE-select:hover {
+select:hover {
   transform: scale(1.03);
 }
 
 
-.NIP-select {
-  width: calc(100% / 3 * 2 - 2rem);
+.NIP {
+  width: calc(100% / 3 * 2 - 3rem);
 
 }
 
-.RE-select {
-  width: calc(100% / 3 - 2rem);
+.RE {
+  width: calc(100% / 3 - 3rem);
+}
+
+.WSF {
+  width: calc(100% - 4rem);
 }
 
 .button-box,
@@ -194,31 +202,35 @@ main {
 .Span-Box-Button {
 
   text-align: center;
-  /* margin: auto; */
 }
 
-
-/* button {
-  transition: background-color 0.5s;
+.element2 {
+  height: calc(100% - 1rem);
+  padding: 0.5rem;
 }
 
-button:hover {
-  background-color: #333;
-  animation: pulse 1s infinite;
+.podsumowanieEle {
+  width: calc(100% - 1rem);
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.98);
-  }
-  100% {
-    transform: scale(1);
-  }
-  
-} */
+.PodsumowanieElement {
+  padding: 0.5rem;
+  border: 0.2rem solid var(--color1);
+  border-radius: 1rem;
+
+}
+
+.PodsumowanieElement h1 {
+  text-align: center;
+}
+
+.Wfull {
+  width: calc(200% - 0.8rem);
+}
 
 footer div {
   display: flex;
@@ -486,6 +498,12 @@ footer div {
   height: calc(100% - 2rem);
 }
 
+.element1 {
+  border: 0.2rem solid var(--color1);
+  border-radius: 1rem;
+  margin-bottom: 0.2rem;
+}
+
 .Span-Box-Button {
   font-size: 1.25rem;
 }
@@ -699,6 +717,130 @@ span.green {
   color: var(--colorRed);
 }
 
+.cookie-consent {
+  width: 80%;
+}
+
+table.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+
+
+table.tabela tr th,
+table.tabela tr td {
+  border: 0.2rem solid black;
+  padding: 0.4rem;
+}
+
+.PodsumowanieElement p {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--colorRed);
+}
+
+.napk {
+  background-color: var(--color3);
+  color: var(--colorText2);
+  text-align: center;
+}
+
+div.element1:nth-child(2n) {
+  background-color: var(--color3);
+  color: var(--colorText3);
+}
+
+tr.przedmiotrow:nth-child(2n) {
+  background-color: var(--color3);
+  color: var(--colorText2);
+}
+
+#GreenInf {
+  color: green;
+}
+
+#YellowInf {
+  color: yellow;
+}
+
+#RedInf {
+  color: var(--colorRed);
+}
+
+.XDDD {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px
+}
+
+/* Przycisk od SETLESSON */
+.cssbuttons-io {
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  border-radius: 0.8em;
+  border: none;
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  color: ghostwhite;
+  overflow: hidden;
+}
+
+.cssbuttons-io svg {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5em;
+}
+
+.cssbuttons-io span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8em 1.2em 0.8em 1.05em;
+}
+
+.cssbuttons-io::before,
+.cssbuttons-io::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.cssbuttons-io::before {
+  content: "";
+  background: #000;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.cssbuttons-io:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+.cssbuttons-io:active {
+  transform: scale(0.95);
+}
+
+.przyciskSLess
+{
+  display: grid;
+  width: 75%;
+  height: 4rem;
+  margin: auto;
+  margin-top: 1rem;
+}
+/* koniec przycisku */
+
 @media (max-width: 1023px) {
 
   .radio-input label span {
@@ -755,5 +897,55 @@ span.green {
   .element .element h4 {
     font-size: 1rem;
     color: var(--colorRed);
+
+  }
+
+  /* 
+  .x
+  {
+    font-size: .6rem;
+  } */
+
+  .element2 {
+    height: calc(100% - 1rem);
+    padding: 0.5rem;
+  }
+
+  .podsumowanieEle {
+    width: calc(100% - 1rem);
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px
+  }
+
+
+  .PodsumowanieElement {
+    padding: 0.5rem;
+    border: 0.2rem solid var(--color1);
+    border-radius: 1rem;
+  }
+
+  .PodsumowanieElement h1 {
+    text-align: center;
+  }
+
+  .Wfull {
+    width: calc(100% - 1.4rem);
+  }
+
+  .brwitmobile {
+    height: 0px;
+    width: 0px;
+  }
+
+  .XDDD {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0px
+  }
+
+  .przyciskSLess
+  {
+    width: 90%;
   }
 }

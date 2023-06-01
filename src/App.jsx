@@ -1,28 +1,34 @@
 import React, { useState } from 'react';
 import './App.css';
-import Section, { InputValueN, InputValueRE } from './components/Section';
+import Section, { InputValueN, InputValueRE, InputValueWSF } from './components/Section';
 import PodsumowanieComp from './components/PodsumowanieComp';
 import BlankMain from './components/BlankMain';
 import HowItWork from './components/HowItWork';
 import FooterComponent from './components/FooterComponent';
 import HomePageComponent from './components/HomePageComponent';
-
 import { useCookies } from 'react-cookie';
-
+import SetLesson from './components/SetLesson';
 
 function App() {
 
+  const [strona, setStrona] = useState(10);
   const [sekcje, setSekcje] = useState([]);
   const [podsumowanieZ, setPodsumowanieZ] = useState([]);
   const [podsumowanieError, setPodsumowanieError] = useState(null);
-  const [strona, setStrona] = useState(10);
-  const [cookies, setCookie] = useCookies(['CThemeName', 'CForAgre']);
+  const [cookies, setCookie] = useCookies(['CThemeName', 'CForAgre',]);
+  const [sekcjaSL, setSekcjaSL] = useState([]);
+
   if (!cookies.CThemeName) {
     setCookie('CThemeName', 'darktheme', { path: '/' });
   }
   if (!cookies.CForAgre) {
     setCookie('CForAgre', false, { path: '/' });
   }
+  // if(!localStorage.getItem('test'))
+  // {
+  //   localStorage.setItem('test',JSON.stringify(listaNauczycieli));
+  // }
+
 
   function dodajSection() {
     const numer = sekcje.length;
@@ -31,6 +37,7 @@ function App() {
     if (sekcje.length === 0) {
       if (InputValueN.length >= 1) InputValueN.length -= InputValueN.length;
       if (InputValueRE.length >= 1) InputValueRE.length -= InputValueRE.length;
+      if (InputValueWSF.length >= 1) InputValueWSF.length -= InputValueWSF.length;
     }
 
   }
@@ -41,21 +48,24 @@ function App() {
     RemovePodsumowanie()
     if (InputValueN.length >= 1) InputValueN.length -= 1;
     if (InputValueRE.length >= 1) InputValueRE.length -= 1
+    if (InputValueWSF.length >= 1) InputValueWSF.length -= 1;
+
   }
   function resetSection() {
     setSekcje([])
     RemovePodsumowanie()
     if (InputValueN.length >= 1) InputValueN.length -= InputValueN.length;
     if (InputValueRE.length >= 1) InputValueRE.length -= InputValueN.length;
+    if (InputValueWSF.length >= 1) InputValueWSF.length -= InputValueWSF.length;
   }
-  
+
   function AddPodsumowanie() {
-    if (InputValueN.length !== 0 && InputValueN.length === InputValueRE.length && InputValueN.length === sekcje.length) {
+    if (InputValueN.length !== 0 && InputValueN.length === InputValueRE.length && InputValueN.length === InputValueWSF.length && InputValueN.length === sekcje.length) {
       setSekcje([])
       setPodsumowanieZ([0])
       setPodsumowanieError(null)
     } else {
-      setPodsumowanieError('Nie Podano Wszystkich Potrzebnych danych') 
+      setPodsumowanieError('Nie Podano Wszystkich Potrzebnych danych')
     }
   }
   function RemovePodsumowanie() {
@@ -77,7 +87,9 @@ function App() {
       <div className="bgcookies">
         <div className="cookie-consent">
           <form>
-            <label htmlFor="consent-checkbox" className='htmlforcheckbox'>Akceptuję pliki cookie</label>
+            <label htmlFor="consent-checkbox" className='htmlforcheckbox'>
+              Ta strona internetowa wykorzystuje pliki cookies w celu zapewnienia optymalnego działania serwisu oraz w celach statystycznych. Kontynuując korzystanie ze strony, wyrażasz zgodę na używanie plików cookies. Więcej informacji na ten temat znajdziesz w naszej polityce prywatności
+            </label>
             <input type="checkbox" id="consent-checkbox" required onChange={selectOption} />
             <button type='submit' onClick={setCookieAgre}>Zapisz</button>
           </form>
@@ -110,15 +122,15 @@ function App() {
                 <Section key={idx} prost={sekcja} />
               ))}
             </div>
-              
+
           </div>}
-            {podsumowanieZ.length !== 0 && 
-              <div className='element'>
-                {podsumowanieZ.map((e, idx) => (
-                  <PodsumowanieComp key={idx} />
-                ))}
-              </div>
-            }
+          {podsumowanieZ.length !== 0 &&
+            <div className='element'>
+              {podsumowanieZ.map((e, idx) => (
+                <PodsumowanieComp key={idx} />
+              ))}
+            </div>
+          }
         </div>
         {
           sekcje.length === 0 &&
@@ -165,6 +177,15 @@ function App() {
               </div>
             </div>
           </div>
+          {/* <button onClick={() => setStrona(8)}>Przejdz Do Ustawienia Lekcji</button> */}
+
+          <div className="przyciskSLess">
+            <button class="cssbuttons-io" onClick={() => setStrona(8)}>
+              <span> Przejdz Do Ustawienia Lekcji (BETA)</span>
+            </button>
+          </div>
+
+
         </div>
       </main>
     )
@@ -192,7 +213,8 @@ function App() {
       {strona === 10 ? <HomePageComponent /> :
         strona === 0 ? <SettingComponent /> :
           strona === 1 ? <Main1 /> :
-            <HowItWork />}
+            strona === 8 ? <SetLesson AktualnaStrona={setStrona} sekcjaSL={sekcjaSL} setSekcjaSL={setSekcjaSL} /> :
+              <HowItWork />}
       {cookies.CForAgre !== 'true' && <CookieAgre />}
 
       <FooterComponent />
