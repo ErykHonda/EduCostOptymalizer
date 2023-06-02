@@ -1,5 +1,5 @@
 import React from 'react'
-import { RodzajPrzedmiotu, WSFuser, listaNauczycieli, randomevent } from '../assets/assets.jsx'
+import { RodzajPrzedmiotu, WSFuser, randomevent } from '../assets/assets.jsx'
 
 
 export const InputValueN = []
@@ -28,6 +28,7 @@ function saveValueWSF(Event) {
 }
 function Section({ prost }) {
 
+    const tablicaDanych = JSON.parse(localStorage.getItem('ListaNauczycieliIPrzedmiotow'))
 
     return (
 
@@ -35,8 +36,9 @@ function Section({ prost }) {
             <section>
                 <select name={prost} onChange={saveValueN} defaultValue={InputValueN[prost]} className='NIP select' >
 
-                    {listaNauczycieli.map((e, inx) => (
-                        <option key={inx} value={inx}>{e[0]} {e[1]} -&gt; {e[2][0]} / {RodzajPrzedmiotu[e[2][1]]}</option>
+                    {tablicaDanych.map((e, inx) => (
+                        InputValueN[prost] ===undefined ? <option key={inx} value={inx}>{e[0]} {e[1]} -&gt; {e[2]} / {RodzajPrzedmiotu[e[3]]}</option>
+                        : inx !==0 && <option key={inx} value={inx}>{e[0]} {e[1]} -&gt; {e[2]} / {RodzajPrzedmiotu[e[3]]}</option>
                     ))
                     }
                 </select>

@@ -166,10 +166,7 @@ select:hover {
   margin-top: 1rem;
 }
 
-.xddd {
-  display: flex;
-  justify-content: center;
-}
+
 
 .button {
   flex: 1 1 auto;
@@ -838,7 +835,7 @@ tr.przedmiotrow:nth-child(2n) {
   width: 120%;
   left: -10%;
   transform: skew(30deg);
-  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+  transition: transform 1s cubic-bezier(0.3, 1, 0.8, 1);
 }
 
 .cssbuttons-io:hover::before {

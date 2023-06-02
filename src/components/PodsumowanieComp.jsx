@@ -1,7 +1,8 @@
-import React from 'react'
-import { RodzajPrzedmiotu, WSFuser, listaNauczycieli, randomevent } from '../assets/assets.jsx'
+import React, { useEffect, useState } from 'react'
+import { RodzajPrzedmiotu, WSFuser, randomevent } from '../assets/assets.jsx'
 import { InputValueN, InputValueRE, InputValueWSF } from './Section';
 
+const storedArray = localStorage.getItem('ListaNauczycieliIPrzedmiotow')
 
 function PodsumowanieComp() {
   const pOGKS = [];
@@ -10,10 +11,26 @@ function PodsumowanieComp() {
   const pI = [];
   const sumaPK = [0, 0, 0, 0];
   const sumaPKS = [0, 0, 0, 0];
+  const [poprawneDane,setPoprawneDane] = useState([]);
+
+    useEffect(()=>{
+    const storedArray1= localStorage.getItem('ListaNauczycieliIPrzedmiotow')
+    if(storedArray1)
+    {
+      const pobraneDane1 = JSON.parse(storedArray1)
+      setPoprawneDane(pobraneDane1)
+    }
+  },[ ])
+
+  const pobraneDane = JSON.parse(storedArray)
+  pobraneDane.map((e, inx) => (
+    poprawneDane[inx] = [e[0], e[1], e[2], e[3]]
+  ))
+
   //zliczanie ogólno kształcących
   for (let i = 0; i < InputValueN.length; i++) {
-    if (listaNauczycieli[InputValueN[i]][2][1] === 1) {
-      pOGKS[pOGKS.length] = [listaNauczycieli[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
+    if (poprawneDane[InputValueN[i]][3] === 1) {
+      pOGKS[pOGKS.length] = [poprawneDane[InputValueN[i]][2], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
       sumaPK[0] += randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1];
       sumaPKS[0] += WSFuser[InputValueWSF[i]][1];
     }
@@ -21,8 +38,8 @@ function PodsumowanieComp() {
 
   //dla Maturalnych
   for (let i = 0; i < InputValueN.length; i++) {
-    if (listaNauczycieli[InputValueN[i]][2][1] === 3) {
-      pM[pM.length] = [listaNauczycieli[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
+    if (poprawneDane[InputValueN[i]][3] === 3) {
+      pM[pM.length] = [poprawneDane[InputValueN[i]][2], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
       sumaPK[1] += randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1];
       sumaPKS[1] += WSFuser[InputValueWSF[i]][1];
 
@@ -31,8 +48,8 @@ function PodsumowanieComp() {
 
   //dla Zawodowych
   for (let i = 0; i < InputValueN.length; i++) {
-    if (listaNauczycieli[InputValueN[i]][2][1] === 2) {
-      pZ[pZ.length] = [listaNauczycieli[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
+    if (poprawneDane[InputValueN[i]][3] === 2) {
+      pZ[pZ.length] = [poprawneDane[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
       sumaPK[2] += randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1];
       sumaPKS[2] += WSFuser[InputValueWSF[i]][1];
 
@@ -42,8 +59,8 @@ function PodsumowanieComp() {
   //dla innych
 
   for (let i = 0; i < InputValueN.length; i++) {
-    if (listaNauczycieli[InputValueN[i]][2][1] === 4) {
-      pI[pI.length] = [listaNauczycieli[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
+    if (poprawneDane[InputValueN[i]][3] === 4) {
+      pI[pI.length] = [poprawneDane[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
       sumaPK[3] += randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1];
       sumaPKS[3] += WSFuser[InputValueWSF[i]][1];
 

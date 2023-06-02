@@ -8,6 +8,7 @@ import FooterComponent from './components/FooterComponent';
 import HomePageComponent from './components/HomePageComponent';
 import { useCookies } from 'react-cookie';
 import SetLesson from './components/SetLesson';
+import { listaNauczycieli } from './assets/assets';
 
 function App() {
 
@@ -16,7 +17,18 @@ function App() {
   const [podsumowanieZ, setPodsumowanieZ] = useState([]);
   const [podsumowanieError, setPodsumowanieError] = useState(null);
   const [cookies, setCookie] = useCookies(['CThemeName', 'CForAgre',]);
-  const [sekcjaSL, setSekcjaSL] = useState([]);
+
+  if(!localStorage.getItem("ListaNauczycieliIPrzedmiotow"))
+  {
+    let newtable = [] ;
+    for(var i =0; i<listaNauczycieli.length;i++)
+    {
+      newtable[i] =[listaNauczycieli[i][0],listaNauczycieli[i][1],listaNauczycieli[i][2][0],listaNauczycieli[i][2][1]]
+    }
+    localStorage.setItem('ListaNauczycieliIPrzedmiotow',JSON.stringify(newtable))
+    // console.warn(newtable)
+    window.location.reload()
+  }
 
   if (!cookies.CThemeName) {
     setCookie('CThemeName', 'darktheme', { path: '/' });
@@ -110,7 +122,10 @@ function App() {
         <div className="cookie-consent">
           <form>
             <label htmlFor="consent-checkbox" className='htmlforcheckbox'>
-              Ta strona internetowa wykorzystuje pliki cookies w celu zapewnienia optymalnego działania serwisu oraz w celach statystycznych. Kontynuując korzystanie ze strony, wyrażasz zgodę na używanie plików cookies. Więcej informacji na ten temat znajdziesz w naszej polityce prywatności
+              Ta strona internetowa wykorzystuje pliki cookies w celu zapewnienia optymalnego działania serwisu oraz w celach statystycznych. Kontynuując korzystanie ze strony, wyrażasz zgodę na używanie plików cookies. 
+              Więcej informacji na ten temat znajdziesz w naszej polityce prywatności*
+              <section>* Pliki Cookies są wykorzystywane do pzechowywania: Obecnego Motywu , Czy została zatwierdzona zgoda na ich wykorzystywanie</section>
+              
             </label>
             <input type="checkbox" id="consent-checkbox" required onChange={selectOption} />
             <button type='submit' onClick={setCookieAgre}>Zapisz</button>
@@ -149,7 +164,7 @@ function App() {
           {podsumowanieZ.length !== 0 &&
             <div className='element'>
               {podsumowanieZ.map((e, idx) => (
-                <PodsumowanieComp key={idx} />
+                <PodsumowanieComp key={idx}/>
               ))}
             </div>
           }
@@ -235,7 +250,7 @@ function App() {
         {strona === 10 ? <HomePageComponent /> :
           strona === 0 ? <SettingComponent /> :
             strona === 1 ? <Main1 /> :
-              strona === 8 ? <SetLesson AktualnaStrona={setStrona} sekcjaSL={sekcjaSL} setSekcjaSL={setSekcjaSL} /> :
+              strona === 8 ? <SetLesson AktualnaStrona={setStrona}/> :
                 <HowItWork setStrona={setStrona}/>}
         {cookies.CForAgre !== 'true' && <CookieAgre />}
 
