@@ -46,21 +46,43 @@ function App() {
     noweSection.pop();
     setSekcje(noweSection)
     RemovePodsumowanie()
-    if (InputValueN.length >= 1) InputValueN.length -= 1;
-    if (InputValueRE.length >= 1) InputValueRE.length -= 1
-    if (InputValueWSF.length >= 1) InputValueWSF.length -= 1;
+    if (InputValueN[sekcje.length-1]) InputValueN.length -= 1;
+    if (InputValueRE[sekcje.length-1]) InputValueRE.length -= 1
+    if (InputValueWSF[sekcje.length-1]) InputValueWSF.length -= 1;
+    setPodsumowanieError(null)
 
   }
   function resetSection() {
     setSekcje([])
     RemovePodsumowanie()
-    if (InputValueN.length >= 1) InputValueN.length -= InputValueN.length;
-    if (InputValueRE.length >= 1) InputValueRE.length -= InputValueN.length;
-    if (InputValueWSF.length >= 1) InputValueWSF.length -= InputValueWSF.length;
+    if (InputValueN.length >= 1) InputValueN.length = 0;
+    if (InputValueRE.length >= 1) InputValueRE.length = 0;
+    if (InputValueWSF.length >= 1) InputValueWSF.length = 0;
+    setPodsumowanieError(null)
+
   }
 
   function AddPodsumowanie() {
-    if (InputValueN.length !== 0 && InputValueN.length === InputValueRE.length && InputValueN.length === InputValueWSF.length && InputValueN.length === sekcje.length) {
+    let IVNnn = 0;
+    let IVREnn = 0;
+    let IVWSFnn = 0;
+
+    for(let i = 0;i<InputValueN.length;i++)
+    {
+      if(InputValueN[i]!==undefined) IVNnn +=1;
+    }
+
+    for(let i = 0;i<InputValueRE.length;i++)
+    {
+      if(InputValueRE[i]!==undefined) IVREnn +=1;
+    }
+
+    for(let i = 0;i<InputValueWSF.length;i++)
+    {
+      if(InputValueWSF[i]!==undefined) IVWSFnn +=1;
+    }
+
+    if (IVNnn !== 0 && IVNnn === IVREnn && IVNnn === IVWSFnn && IVNnn === sekcje.length) {
       setSekcje([])
       setPodsumowanieZ([0])
       setPodsumowanieError(null)
@@ -180,7 +202,7 @@ function App() {
           {/* <button onClick={() => setStrona(8)}>Przejdz Do Ustawienia Lekcji</button> */}
 
           <div className="przyciskSLess">
-            <button class="cssbuttons-io" onClick={() => setStrona(8)}>
+            <button className="cssbuttons-io" onClick={() => setStrona(8)}>
               <span> Przejdz Do Ustawienia Lekcji (BETA)</span>
             </button>
           </div>
@@ -193,31 +215,31 @@ function App() {
 
   return (
     <div className="App" id={cookies.CThemeName}>
-      <header>
-        <div className="radio-input">
-          <label>
-            <input type="radio" id="value-1" name="value-radio" value="value-1" onClick={() => setStrona(0)} />
-            <span>Ustawnienia</span>
-          </label>
-          <label>
-            <input type="radio" id="value-2" name="value-radio" value="value-2" onClick={() => setStrona(1)} />
-            <span>Kalkulator</span>
-          </label>
-          <label>
-            <input type="radio" id="value-3" name="value-radio" value="value-3" onClick={() => setStrona(2)} />
-            <span>Instukcja</span>
-          </label>
-          <span className="selection"></span>
-        </div>
-      </header>
-      {strona === 10 ? <HomePageComponent /> :
-        strona === 0 ? <SettingComponent /> :
-          strona === 1 ? <Main1 /> :
-            strona === 8 ? <SetLesson AktualnaStrona={setStrona} sekcjaSL={sekcjaSL} setSekcjaSL={setSekcjaSL} /> :
-              <HowItWork />}
-      {cookies.CForAgre !== 'true' && <CookieAgre />}
+        <header>
+          <div className="radio-input">
+            <label>
+              <input type="radio" id="value-1" name="value-radio" value="value-1" checked={strona===0  || strona===8} onChange={() => setStrona(0)} />
+              <span>Ustawnienia</span>
+            </label>
+            <label>
+              <input type="radio" id="value-2" name="value-radio" value="value-2" checked={strona===1} onChange={() => setStrona(1)} />
+              <span>Kalkulator</span>
+            </label>
+            <label>
+              <input type="radio" id="value-3" name="value-radio" value="value-3" checked={strona===2} onChange={() => setStrona(2)} />
+              <span>Instukcja</span>
+            </label>
+            <span className="selection"></span>
+          </div>
+        </header>
+        {strona === 10 ? <HomePageComponent /> :
+          strona === 0 ? <SettingComponent /> :
+            strona === 1 ? <Main1 /> :
+              strona === 8 ? <SetLesson AktualnaStrona={setStrona} sekcjaSL={sekcjaSL} setSekcjaSL={setSekcjaSL} /> :
+                <HowItWork setStrona={setStrona}/>}
+        {cookies.CForAgre !== 'true' && <CookieAgre />}
 
-      <FooterComponent />
+        <FooterComponent />
     </div>
   );
 
