@@ -1,6 +1,6 @@
 export const Author = "Eryk Wiśniewski 2G"
 // export const Author = "Eryk Wiśniewski 2G, Konsultacja: Piotr Sadowski"
-export const Version = "0.3.7"
+export const Version = "0.3.8"
 
 export const RodzajPrzedmiotu =
 [

@@ -919,6 +919,18 @@ tr.przedmiotrow:nth-child(2n) {
   width: calc(50%);
   float: left;
 }
+
+.komunkaciorSetLesson
+{
+  position: absolute;
+  bottom: calc(var(--footerH) + 1rem);
+  z-index: 3;
+  width: var(--elementWidht);
+  left: calc((100vw - var(--elementWidht))/2);
+  border-radius: 1rem;
+}
+
+
 @media (max-width: 1023px) {
 
   .radio-input label span {

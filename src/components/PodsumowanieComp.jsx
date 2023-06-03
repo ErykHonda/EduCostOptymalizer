@@ -49,7 +49,7 @@ function PodsumowanieComp() {
   //dla Zawodowych
   for (let i = 0; i < InputValueN.length; i++) {
     if (poprawneDane[InputValueN[i]][3] === 2) {
-      pZ[pZ.length] = [poprawneDane[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
+      pZ[pZ.length] = [poprawneDane[InputValueN[i]][2], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
       sumaPK[2] += randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1];
       sumaPKS[2] += WSFuser[InputValueWSF[i]][1];
 
@@ -60,7 +60,7 @@ function PodsumowanieComp() {
 
   for (let i = 0; i < InputValueN.length; i++) {
     if (poprawneDane[InputValueN[i]][3] === 4) {
-      pI[pI.length] = [poprawneDane[InputValueN[i]][2][0], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
+      pI[pI.length] = [poprawneDane[InputValueN[i]][2], randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1], randomevent[InputValueRE[i]][0]];
       sumaPK[3] += randomevent[InputValueRE[i]][1] * WSFuser[InputValueWSF[i]][1];
       sumaPKS[3] += WSFuser[InputValueWSF[i]][1];
 

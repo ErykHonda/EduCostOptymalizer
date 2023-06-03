@@ -253,7 +253,6 @@ function App() {
               strona === 8 ? <SetLesson AktualnaStrona={setStrona}/> :
                 <HowItWork setStrona={setStrona}/>}
         {cookies.CForAgre !== 'true' && <CookieAgre />}
-
         <FooterComponent />
     </div>
   );
