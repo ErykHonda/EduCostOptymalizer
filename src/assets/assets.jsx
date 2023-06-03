@@ -1,6 +1,6 @@
 export const Author = "Eryk Wiśniewski 2G"
 // export const Author = "Eryk Wiśniewski 2G, Konsultacja: Piotr Sadowski"
-export const Version = "0.3.8"
+export const Version = "0.3.9"
 
 export const RodzajPrzedmiotu =
 [
@@ -67,12 +67,14 @@ export const listaNauczycieli = [
     ["Markowski", "Karol", listaPrzedmiotow[16]]
 ]
 export const randomevent = [
-    ['Co Będzie Na Lekcji', "Liczba"],
-    ["Odwołana", 0],
+    ['Na Lekcji Będzie', "Liczba"],
+    ["Nie Ma lekcji / odwołana", 0],
     ["Zastępstow", 0.25],
     ["Wyjście", 0.5],
-    ["Praca w grupach",0.75],
-    ["Normalna",1],
+    ["Praca w grupach/ samodzielna",0.75],
+    ["Teoria",0.75],
+    ["Praktyka",1],
+    ["Ćwiczenia / Normalna",1],
     ["Projekt",1.25],
     ["Kartkówka", 1.25],
     ["Sprawdzian", 1.5]

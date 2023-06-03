@@ -18,14 +18,12 @@ function App() {
   const [podsumowanieError, setPodsumowanieError] = useState(null);
   const [cookies, setCookie] = useCookies(['CThemeName', 'CForAgre',]);
 
-  if(!localStorage.getItem("ListaNauczycieliIPrzedmiotow"))
-  {
-    let newtable = [] ;
-    for(var i =0; i<listaNauczycieli.length;i++)
-    {
-      newtable[i] =[listaNauczycieli[i][0],listaNauczycieli[i][1],listaNauczycieli[i][2][0],listaNauczycieli[i][2][1]]
+  if (!localStorage.getItem("ListaNauczycieliIPrzedmiotow")) {
+    let newtable = [];
+    for (var i = 0; i < listaNauczycieli.length; i++) {
+      newtable[i] = [listaNauczycieli[i][0], listaNauczycieli[i][1], listaNauczycieli[i][2][0], listaNauczycieli[i][2][1]]
     }
-    localStorage.setItem('ListaNauczycieliIPrzedmiotow',JSON.stringify(newtable))
+    localStorage.setItem('ListaNauczycieliIPrzedmiotow', JSON.stringify(newtable))
     // console.warn(newtable)
     window.location.reload()
   }
@@ -58,9 +56,9 @@ function App() {
     noweSection.pop();
     setSekcje(noweSection)
     RemovePodsumowanie()
-    if (InputValueN[sekcje.length-1]) InputValueN.length -= 1;
-    if (InputValueRE[sekcje.length-1]) InputValueRE.length -= 1
-    if (InputValueWSF[sekcje.length-1]) InputValueWSF.length -= 1;
+    if (InputValueN[sekcje.length - 1]) InputValueN.length -= 1;
+    if (InputValueRE[sekcje.length - 1]) InputValueRE.length -= 1
+    if (InputValueWSF[sekcje.length - 1]) InputValueWSF.length -= 1;
     setPodsumowanieError(null)
 
   }
@@ -79,19 +77,16 @@ function App() {
     let IVREnn = 0;
     let IVWSFnn = 0;
 
-    for(let i = 0;i<InputValueN.length;i++)
-    {
-      if(InputValueN[i]!==undefined) IVNnn +=1;
+    for (let i = 0; i < InputValueN.length; i++) {
+      if (InputValueN[i] !== undefined) IVNnn += 1;
     }
 
-    for(let i = 0;i<InputValueRE.length;i++)
-    {
-      if(InputValueRE[i]!==undefined) IVREnn +=1;
+    for (let i = 0; i < InputValueRE.length; i++) {
+      if (InputValueRE[i] !== undefined) IVREnn += 1;
     }
 
-    for(let i = 0;i<InputValueWSF.length;i++)
-    {
-      if(InputValueWSF[i]!==undefined) IVWSFnn +=1;
+    for (let i = 0; i < InputValueWSF.length; i++) {
+      if (InputValueWSF[i] !== undefined) IVWSFnn += 1;
     }
 
     if (IVNnn !== 0 && IVNnn === IVREnn && IVNnn === IVWSFnn && IVNnn === sekcje.length) {
@@ -122,10 +117,10 @@ function App() {
         <div className="cookie-consent">
           <form>
             <label htmlFor="consent-checkbox" className='htmlforcheckbox'>
-              Ta strona internetowa wykorzystuje pliki cookies w celu zapewnienia optymalnego działania serwisu oraz w celach statystycznych. Kontynuując korzystanie ze strony, wyrażasz zgodę na używanie plików cookies. 
+              Ta strona internetowa wykorzystuje pliki cookies w celu zapewnienia optymalnego działania serwisu oraz w celach statystycznych. Kontynuując korzystanie ze strony, wyrażasz zgodę na używanie plików cookies.
               Więcej informacji na ten temat znajdziesz w naszej polityce prywatności*
               <section>* Pliki Cookies są wykorzystywane do pzechowywania: Obecnego Motywu , Czy została zatwierdzona zgoda na ich wykorzystywanie</section>
-              
+
             </label>
             <input type="checkbox" id="consent-checkbox" required onChange={selectOption} />
             <button type='submit' onClick={setCookieAgre}>Zapisz</button>
@@ -164,7 +159,7 @@ function App() {
           {podsumowanieZ.length !== 0 &&
             <div className='element'>
               {podsumowanieZ.map((e, idx) => (
-                <PodsumowanieComp key={idx}/>
+                <PodsumowanieComp key={idx} />
               ))}
             </div>
           }
@@ -192,6 +187,7 @@ function App() {
     return (
       <main className='MainAside'>
         <div className="element" id='Aside'>
+
           <div className="zmianaTrybu">
             <h3>Zmiana Motywu Strony</h3>
             <div className="wrapper">
@@ -230,30 +226,32 @@ function App() {
 
   return (
     <div className="App" id={cookies.CThemeName}>
+      {strona !== 8 &&
         <header>
           <div className="radio-input">
             <label>
-              <input type="radio" id="value-1" name="value-radio" value="value-1" checked={strona===0  || strona===8} onChange={() => setStrona(0)} />
+              <input type="radio" id="value-1" name="value-radio" value="value-1" checked={strona === 0 || strona === 8} onChange={() => setStrona(0)} />
               <span>Ustawnienia</span>
             </label>
             <label>
-              <input type="radio" id="value-2" name="value-radio" value="value-2" checked={strona===1} onChange={() => setStrona(1)} />
+              <input type="radio" id="value-2" name="value-radio" value="value-2" checked={strona === 1} onChange={() => setStrona(1)} />
               <span>Kalkulator</span>
             </label>
             <label>
-              <input type="radio" id="value-3" name="value-radio" value="value-3" checked={strona===2} onChange={() => setStrona(2)} />
+              <input type="radio" id="value-3" name="value-radio" value="value-3" checked={strona === 2} onChange={() => setStrona(2)} />
               <span>Instukcja</span>
             </label>
             <span className="selection"></span>
           </div>
         </header>
-        {strona === 10 ? <HomePageComponent /> :
-          strona === 0 ? <SettingComponent /> :
-            strona === 1 ? <Main1 /> :
-              strona === 8 ? <SetLesson AktualnaStrona={setStrona}/> :
-                <HowItWork setStrona={setStrona}/>}
-        {cookies.CForAgre !== 'true' && <CookieAgre />}
-        <FooterComponent />
+      }
+      {strona === 10 ? <HomePageComponent /> :
+        strona === 0 ? <SettingComponent /> :
+          strona === 1 ? <Main1 /> :
+            strona === 8 ? <SetLesson AktualnaStrona={setStrona} /> :
+              <HowItWork setStrona={setStrona} />}
+      {cookies.CForAgre !== 'true' && <CookieAgre />}
+      <FooterComponent />
     </div>
   );
 

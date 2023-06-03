@@ -3,7 +3,7 @@ import { RodzajPrzedmiotu } from '../assets/assets';
 
 
 function SectionSetLesson(param) {
-  const { Imie, Nazwisko, Przedmiot, Rodzaj,dane,indexs } = param;
+  const { Imie, Nazwisko, Przedmiot, Rodzaj,dane,indexs, setChanges } = param;
 
   function zapisanieDanych(Event) {
     switch (Event.target.name) {
@@ -32,6 +32,7 @@ function SectionSetLesson(param) {
         {
         }
     }
+    setChanges(true)
   }
 
   return (

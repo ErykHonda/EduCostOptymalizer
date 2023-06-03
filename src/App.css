@@ -930,6 +930,50 @@ tr.przedmiotrow:nth-child(2n) {
   border-radius: 1rem;
 }
 
+.SetLesson
+{
+  height: calc(100% - var(--footerH));
+}
+
+.KomOWyjBezZap
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff0f;
+  backdrop-filter: blur(5px);
+  z-index: 5;
+}
+.KomOWyjBezZap div
+{
+  border-radius: 3rem ;
+  margin: auto;
+  width: 90%;
+  height: calc(var(--headerH) * 2);
+  text-align: center;
+  background-color: var(--color2);
+  color: var(--colorText2);
+}
+
+.KomOWyjBezZap button
+{
+  
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-size: 2.5rem;
+  width: 35%;
+  height: 50%;
+  background-color: var(--color4);
+  color: var(--colorText4);
+}
+
+.KomOWyjBezZap button:hover
+{
+  background-color: var(--color5);
+  color: var(--colorText5);
+}
 
 @media (max-width: 1023px) {
 
