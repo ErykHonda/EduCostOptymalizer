@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import exportexperimental from './assets/exportexpermiental.txt'
+
 import Section, { InputValueN, InputValueRE, InputValueWSF } from './components/Section';
 import PodsumowanieComp from './components/PodsumowanieComp';
 import BlankMain from './components/BlankMain';
@@ -210,13 +212,27 @@ function App() {
               </div>
             </div>
           </div>
-          {/* <button onClick={() => setStrona(8)}>Przejdz Do Ustawienia Lekcji</button> */}
 
           <div className="przyciskSLess">
             <button className="cssbuttons-io" onClick={() => setStrona(8)}>
-              <span> Przejdz Do Ustawienia Lekcji (BETA)</span>
+              <span> Przejdz Do Ustawienia Lekcji </span>
             </button>
           </div>
+          <br></br>
+          <section className='ButtonToHowItWork'>
+            <section className='DownloadButtonHowItWork LeftButton'>
+              <a href={exportexperimental} download='Ustawienia'>
+              <button className="button1 left1">
+                <span className="button1-content">Exportuj "Ustawienia Do Lekcji" (Experimental)</span>
+              </button>
+                </a>
+            </section>
+            <section className='DownloadButtonHowItWork RightButton'>
+              <button className="button1 right1">
+                <span className="button1-content">Importuj "Ustawienia Do Lekcji" (Experimental)</span>
+              </button>
+            </section>
+        </section>
 
 
         </div>

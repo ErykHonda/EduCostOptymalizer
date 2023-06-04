@@ -14,11 +14,12 @@ export const RodzajPrzedmiotu =
 export const WSFuser = 
 [
     ["Ta Lekcja Jest Dla Mnie", "Liczba"],
-    ["Nie Ważna",0.5],
-    ["Mało Ważna", 0.75],
-    ["Naromalna",1],
+    ["Nie Ważna",0.25],
+    ["Mało Ważna", 0.5],
+    ["Neutralna",0.75],
     ["Ważna",1.5],
-    ["Bardzo Ważna",2]
+    ["Bardzo Ważna",2.5],
+    ["Pilna",3]
 ]
 
 export const listaPrzedmiotow = [
@@ -41,7 +42,9 @@ export const listaPrzedmiotow = [
     ["WF",1],
     ["Godzina Wychowawcza",1],
     ["Pm5",2],
-    ["Pm6",2]
+    ["Pm6",2],
+    ["Zajęcia  w Klubie",4],
+
 ];
 
 export const listaNauczycieli = [
@@ -64,12 +67,14 @@ export const listaNauczycieli = [
     ["Kwaśnik", "Stanisław", listaPrzedmiotow[13]],
     ["Januszewska", "Maria", listaPrzedmiotow[14]],
     ["Kołak", "Irmina", listaPrzedmiotow[15]],
-    ["Markowski", "Karol", listaPrzedmiotow[16]]
+    ["Markowski", "Karol", listaPrzedmiotow[16]],
+    ["Kruszewska", "Małgorzata", listaPrzedmiotow[17]],
+    ["Firmowska", "Jolanta", listaPrzedmiotow[17]]
 ]
 export const randomevent = [
     ['Na Lekcji Będzie', "Liczba"],
     ["Nie Ma lekcji / odwołana", 0],
-    ["Zastępstow", 0.25],
+    ["Zastępstow za nauczyciela", 0.25],
     ["Wyjście", 0.5],
     ["Praca w grupach/ samodzielna",0.75],
     ["Teoria",0.75],

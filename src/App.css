@@ -4,9 +4,14 @@
   --footerH: 3rem;
   --fontFooterSize: 1rem;
   --elementWidht: 90%;
-  --colorforprintbtn: #ffa500;
-  --colorRed: #ff0000;
+  --colorforprintbtn: #f2cb7d;
+  --colorRed: #ff7f7f;
+  --colorGreen: #ace5c6;
+  --colorBlue: #707fe2;
   user-select: none;
+  --ColorGreenInfo1: #88d888;
+  --ColorGreenInfo: #1f921f;
+  --ColorYellowInfo: yellow;
 }
 
 * {
@@ -44,14 +49,14 @@
   --color2: #c8c8c8;
   --color3: #a8a8a8;
   --color4: #888888;
-  --color5: #686868;
+  --color5: #8d7c7c;
   --colorText1: #000000;
   --colorText2: #000000;
   --colorText3: #ffffff;
   --colorText4: #ffffff;
   --colorText5: #ffffff;
-  --colorRed: #b30000;
-
+  --colorBlue: #8a95de;
+  
 }
 
 #firsttheme {
@@ -65,6 +70,8 @@
   --colorText3: #FFFFFF;
   --colorText4: #FFFFFF;
   --colorText5: #FFFFFF;
+  --ColorGreenInfo: #88d888;
+
 }
 
 .App {
@@ -351,7 +358,7 @@ footer div {
 }
 
 .b1 {
-  border: 2px solid #00cc00;
+  border: 2px solid var(--colorGreen);
 }
 
 .b2 {
@@ -359,11 +366,11 @@ footer div {
 }
 
 .b3 {
-  border: 2px solid #0000ff;
+  border: 2px solid var(--colorBlue);
 }
 
 .type1::after {
-  --colorButton: #00cc00;
+  --colorButton: var(--colorGreen);
   content: "";
   position: absolute;
   left: 0;
@@ -408,7 +415,7 @@ footer div {
 
 
 .type3::after {
-  --colorButton: #0000ff;
+  --colorButton: var(--colorBlue);
   content: "";
   position: absolute;
   left: 0;
@@ -528,7 +535,16 @@ footer div {
   font-size: 1.5rem;
   text-align: center;
   color: var(--colorRed);
-  -webkit-text-stroke: 0.09rem black;
+}
+
+.left1
+{
+  margin-right: 3rem;
+}
+
+.right1
+{
+  margin-left: 3em;
 }
 
 /* ustawienia */
@@ -687,7 +703,7 @@ div.Iobs ol li span.pomarancz {
 }
 
 strong.green {
-  color: #00cc00;
+  color: var(--colorGreen);
 }
 strong.darkGreen
 {
@@ -700,12 +716,12 @@ strong.red
 }
 strong.blue
 {
-  color: blue;
+  color: var(--colorBlue);
 }
 
 strong.orange
 {
-  color: #ffa500;
+  color: var(--colorforprintbtn);
 }
 
 .BlMa {
@@ -772,16 +788,35 @@ tr.przedmiotrow:nth-child(2n) {
   color: var(--colorText2);
 }
 
+/* średnia Wyników */
+.SRW
+{
+  font-size: 2.1rem;
+}
+
 #GreenInf {
-  color: green;
+  color: var(--ColorGreenInfo);
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+#GreenInf1 {
+  color: var(--ColorGreenInfo1);
+  
 }
 
 #YellowInf {
-  color: yellow;
+  color:  var(--ColorYellowInfo);
+  font-weight: bold;
+  font-size: 1.4rem;
+
 }
 
 #RedInf {
   color: var(--colorRed);
+  font-weight: 1000;
+  font-size: 1.4rem;
+
 }
 
 .XDDD {
@@ -995,7 +1030,6 @@ tr.przedmiotrow:nth-child(2n) {
 
   .MainStronaGlowna div h4 {
     font-size: 1.2rem;
-    -webkit-text-stroke: 0rem black;
   }
 
   .zmianaTrybu {

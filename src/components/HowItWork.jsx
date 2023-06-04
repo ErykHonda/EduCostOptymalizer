@@ -32,17 +32,17 @@ function HowItWork(props) {
         </ol> */}
 
           <ol>
-            <li>Po wejściu na stronę, znajdź zakładkę <strong className="darkGreen" onClick={()=>setStrona(1)}>"Kalkulator"</strong> i kliknij na nią.</li>
+            <li>Po wejściu na stronę, znajdź zakładkę <strong className="darkGreen" onClick={()=>setStrona(1)}>"Kalkulator"</strong> i kliknij.</li>
             <li>Po otwarciu zakładki <strong className="darkGreen" onClick={()=>setStrona(1)}>"Kalkulator"</strong> zobaczysz trzy przyciski: <strong className='green'>"Dodaj"</strong>, <strong className='red'>"Usuń"</strong> i <strong className='blue'>"Resetuj"</strong>.</li>
             <li>Kliknij przycisk <strong className='green'>"Dodaj"</strong>, aby dodać element do listy uzupełnienia.</li>
             <li>Po kliknięciu przycisku <strong className='green'>"Dodaj"</strong> pojawią się trzy pola wyboru, które musisz wypełnić.</li>
             <li>Uzupełnij wymagane dane w polach wyboru dla danego elementu.</li>
-            <li> Jeśli chcesz usunąć ostatnio dodany element, kliknij przycisk <strong className='red'>"Usuń"</strong>. To spowoduje usunięcie ostatniego elementu z listy.</li>
-            <li>Jeśli chcesz zresetować stronę do stanu początkowego, kliknij przycisk <strong className='blue'>"Resetuj"</strong>. Spowoduje to usunięcie wszystkich dodanych elementów i przywrócenie strony do stanu początkowego.</li>
+            <li>Jeśli chcesz usunąć ostatni dodany element, kliknij przycisk <strong className='red'>"Usuń"</strong>. To spowoduje usunięcie ostatniego elementu z listy.</li>
+            <li>Jeżeli chcesz zresetować stronę do stanu początkowego, kliknij przycisk <strong className='blue'>"Resetuj"</strong>. Spowoduje to usunięcie wszystkich dodanych elementów i przywrócenie strony do stanu początkowego.</li>
             <li>Możesz dodawać, usuwać i resetować elementy według potrzeb.</li>
-            <li>Gdy jesteś gotowy do wyświetlenia podsumowania, kliknij przycisk <strong className='orange'>"Wyświetl Podsumowanie"</strong>.</li>
-            <p>Pamiętaj, aby upewnić się, że wszystkie wymagane pola wyboru są uzupełnione przed dodaniem elementu. Możesz również usuwać i resetować elementy w dowolnym momencie. Klikając przycisk <strong className='orange'>"Wyświetl Podsumowanie"</strong> zostaniesz przeniesiony do ekranu zawierającego podsumowanie na podstawie dodanych elementów.</p>
-            <p>Postępuj zgodnie z powyższymi krokami, aby korzystać z funkcjonalności zakładki <strong className="darkGreen" onClick={()=>setStrona(1)}>"Kalkulator"</strong> i uzyskać podsumowanie na podstawie dodanych elementów.</p>
+            <li>Gdy jesteś gotowy do wyświetlenia podsumowania, przejdz do przycisku <strong className='orange'>"Wyświetl Podsumowanie"</strong>.</li>
+            <p>Pamiętaj, aby upewnić się, że wszystkie wymagane pola wyboru są uzupełnione przed ich przesłaniem. Możesz również usuwać i resetować elementy w dowolnym momencie. Klikając przycisk <strong className='orange'>"Wyświetl Podsumowanie"</strong> zostaniesz przekierowany do ekranu zawierającego podsumowanie na podstawie dodanych elementów.</p>
+            <p>Postępuj zgodnie z powyższymi krokami, aby skorzystać z funkcjonalności zakładki <strong className="darkGreen" onClick={()=>setStrona(1)}>"Kalkulator"</strong> i uzyskać podsumowanie na podstawie dodanych elementów.</p>
           </ol>
         </div>
 
