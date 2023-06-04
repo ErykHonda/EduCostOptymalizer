@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './App.css';
-import exportexperimental from './assets/exportexpermiental.txt'
+// import exportexperimental from './assets/exportexpermiental.txt'
 
 import Section, { InputValueN, InputValueRE, InputValueWSF } from './components/Section';
 import PodsumowanieComp from './components/PodsumowanieComp';
@@ -11,6 +11,9 @@ import HomePageComponent from './components/HomePageComponent';
 import { useCookies } from 'react-cookie';
 import SetLesson from './components/SetLesson';
 import { listaNauczycieli } from './assets/assets';
+import { saveAs } from 'file-saver';
+import { Alert, AlertDescription, AlertIcon, AlertTitle, ChakraProvider } from '@chakra-ui/react';
+import { motion } from 'framer-motion'
 
 function App() {
 
@@ -186,8 +189,87 @@ function App() {
     const handleOptionChange = (event) => {
       setCookie('CThemeName', event.target.value, { path: '/' });
     };
+
+    function saveToFile() {
+      const data = localStorage.getItem('ListaNauczycieliIPrzedmiotow');
+      const blob = new Blob([data], { type: 'text/plain;charset=utf-8' });
+      saveAs(blob, 'EduCostOptymalizerSettings.txt');
+    }
+
+    const fileInputRef = useRef(null);
+
+    const AktywacjaPobierania = () => {
+      fileInputRef.current.click();
+    };
+
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const fileContent = e.target.result;
+        przetwarzanieDanychPobranychZPliku(fileContent);
+      };
+
+      reader.readAsText(file);
+    };
+
+    const przetwarzanieDanychPobranychZPliku = (fileContent) => {
+      try {
+        if(Array.isArray(JSON.parse(fileContent)))
+        if(Array.isArray(JSON.parse(fileContent)[0]))
+        {
+          let LenghtError = false
+          for(let i = 0 ; i<JSON.parse(fileContent).length;i++)
+          {
+            if(JSON.parse(fileContent)[i].length!==4 && !isNaN(JSON.parse(fileContent)[i][3]))LenghtError=true
+          }
+          if(LenghtError===false)
+          {
+            localStorage.setItem("ListaNauczycieliIPrzedmiotow",fileContent)
+            window.location.reload()
+          }else {
+            console.error("podano błędny zestaw danych")
+          }
+        }
+        
+      } catch (error) {
+        setRodzajKomunikatu('error')
+        setShowMessageValue(['Nie Wczytano Danych', 'Dane Podane W Pliku Nie Są poprawne Przez Co Nie Zostały Wczytane Do Użytku'])
+        console.error('Błąd podczas parsowania danych:', error);
+        showMessageSwich()
+      }
+    };
+    const [showMessageValue, setShowMessageValue] = useState(['Nie Wczytano Danych', 'Dane Podane W Pliku Nie Są poprawne Przez Co Nie Zostały Wczytane Do Użytku'])
+    const [rodzajKomunikatu, setRodzajKomunikatu] = useState('error')
+    const [showMessage, setShowMessage] = useState(false)
+
+    const showMessageSwich = () => {
+      setShowMessage(true)
+      setTimeout(() => {
+        setShowMessage(false)
+      }, 2500);
+    }
     return (
       <main className='MainAside'>
+        {showMessage &&
+        <div className='komunkaciorSetLesson'>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 15 }}
+            transition={{ duration: 0.5 }}
+          >
+            <ChakraProvider>
+              <Alert status={rodzajKomunikatu} variant={"solid"}>
+                <AlertIcon />
+                <AlertTitle>{showMessageValue[0]}</AlertTitle>
+                <AlertDescription>{showMessageValue[1]}</AlertDescription>
+              </Alert>
+            </ChakraProvider>
+          </motion.div>
+        </div>
+      }
         <div className="element" id='Aside'>
 
           <div className="zmianaTrybu">
@@ -221,20 +303,19 @@ function App() {
           <br></br>
           <section className='ButtonToHowItWork'>
             <section className='DownloadButtonHowItWork LeftButton'>
-              <a href={exportexperimental} download='Ustawienia'>
-              <button className="button1 left1">
-                <span className="button1-content">Exportuj "Ustawienia Do Lekcji" (Experimental)</span>
+              {/* <a href={exportexperimental} download='Ustawienia'> */}
+              <button className="button1 left1" onClick={() => saveToFile()}>
+                <span className="button1-content" >Exportuj "Ustawienia Do Lekcji" (Experimental)</span>
               </button>
-                </a>
+              {/* </a> */}
             </section>
             <section className='DownloadButtonHowItWork RightButton'>
-              <button className="button1 right1">
+            <input type="file" ref={fileInputRef} style={{ display: 'none' }} onChange={handleFileChange} />
+              <button className="button1 right1" onClick={AktywacjaPobierania}>
                 <span className="button1-content">Importuj "Ustawienia Do Lekcji" (Experimental)</span>
               </button>
             </section>
-        </section>
-
-
+          </section>
         </div>
       </main>
     )
